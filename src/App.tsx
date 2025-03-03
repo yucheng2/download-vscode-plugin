@@ -16,7 +16,7 @@ export function App() {
     }
 
     let version = versionMatch?.[1];
-    
+
     if (!version) {
       try {
         const apiResponse = await fetch('https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery', {
@@ -34,18 +34,18 @@ export function App() {
             flags: 2151
           })
         });
-        
+
         if (!apiResponse.ok) {
           throw new Error(`API请求失败: ${apiResponse.status} ${apiResponse.statusText}`);
         }
         const data = await apiResponse.json();
-        
+
         if (!data?.results?.[0]?.extensions?.[0]?.versions?.[0]?.version) {
           throw new Error('无效的API响应结构');
         }
         version = data.results[0].extensions[0].versions[0].version;
         console.log('成功获取最新版本:', version);
-      } catch (err) {
+      } catch (err: any) {
         throw new Error('获取最新版本失败: ' + err.message);
       }
     }
@@ -65,7 +65,7 @@ export function App() {
       setDownloadUrl(newUrl);
       setOfficialUrl(officialUrl);
       setError('');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       setDownloadUrl('');
     }
@@ -115,4 +115,3 @@ export function App() {
 }
 
 export default App
-
