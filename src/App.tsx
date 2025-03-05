@@ -83,6 +83,7 @@ export function App() {
   return (
     <div className="app-container">
       <h1>VS Code插件下载链接转换器</h1>
+      <h2><a href="https://marketplace.visualstudio.com/" target='_blank'>vscode官方插件地址</a></h2>
       <div className="input-group">
         <input
           type="text"
